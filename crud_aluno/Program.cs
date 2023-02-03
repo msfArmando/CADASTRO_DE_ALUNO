@@ -49,14 +49,45 @@ class program
                     alunosCadastrados.Add(aluno);
                     break;
                 case 2:
-                    Console.WriteLine("Digite o ID do aluno que deseja exibir as informações: ");
+                    Console.WriteLine("Digite o ID do aluno que deseja EXIBIR as informações: ");
                     int idsearch = int.Parse(Console.ReadLine());
 
                     foreach (Aluno Aluno in alunosCadastrados)
                     {
                         if(Aluno.ID == idsearch)
                         {
-                            Console.WriteLine(Aluno.Nome);
+                            Console.WriteLine("Nome: " + Aluno.Nome);
+                            Console.WriteLine("CPF: " + Aluno.CPF);
+                            Console.WriteLine("Idade: " + Aluno.Idade);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Loading...");
+                        }
+                    }
+                    break;
+                case 3:
+                    Console.WriteLine("Digite o ID do aluno que deseja EDITAR as informações: ");
+                    int editsearch = int.Parse(Console.ReadLine());
+
+                    foreach (Aluno Aluno in alunosCadastrados)
+                    {
+                        if (Aluno.ID == editsearch)
+                        {
+                            Console.WriteLine("Digite o novo Nome: ");
+                            string newname = Console.ReadLine();
+
+                            Console.WriteLine("Digite o novo CPF: ");
+                            long newcpf = long.Parse(Console.ReadLine());
+
+                            Console.WriteLine("Digite a nova Idade: ");
+                            int newidade = int.Parse(Console.ReadLine());
+
+                            Aluno.Nome = newname;
+                            Aluno.CPF = newcpf;
+                            Aluno.Idade = newidade;
+
+                            Console.WriteLine("Aluno atualizado!");
                         }
                         else
                         {
@@ -64,9 +95,6 @@ class program
                         }
                     }
 
-                    break;
-                case 3:
-                    Console.WriteLine("u");
                     break;
                 case 4:
                     Console.WriteLine("d");
