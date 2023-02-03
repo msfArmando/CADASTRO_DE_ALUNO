@@ -8,9 +8,9 @@ class program
         int op;
         bool ciclo = true;
         int ID = 0;
-        string nome;
-        long cpf;
-        int idade;
+        string nome = "";
+        long cpf = 0;
+        int idade = 0;
 
         Console.WriteLine("Bem-vindo ao cadastro de aluno!");
         Console.WriteLine("-------------------------------");
@@ -23,6 +23,8 @@ class program
 
         List<Aluno> alunosCadastrados = new List<Aluno>();
 
+        Aluno aluno = new Aluno(ID, nome, cpf, idade);
+
         while (ciclo)
         {
             Console.WriteLine("O que deseja fazer a seguir?");
@@ -32,39 +34,10 @@ class program
             switch (op)
             {
                 case 1:
-                    Console.WriteLine("Iniciando cadastro de aluno...");
-                    Console.WriteLine("Qual o nome do aluno? ");
-                    nome = Console.ReadLine();
-
-                    Console.WriteLine("Quantos anos o aluno tem? ");
-                    idade = int.Parse(Console.ReadLine());
-                    
-                    Console.WriteLine("Digite o CPF do aluno(APENAS NÚMEROS): ");
-                    cpf = long.Parse(Console.ReadLine());
-
-                    ID++;
-
-                    Aluno aluno = new Aluno(ID, nome, cpf, idade);
-
-                    alunosCadastrados.Add(aluno);
+                    aluno.SetAluno();
                     break;
                 case 2:
-                    Console.WriteLine("Digite o ID do aluno que deseja EXIBIR as informações: ");
-                    int idsearch = int.Parse(Console.ReadLine());
-
-                    foreach (Aluno Aluno in alunosCadastrados)
-                    {
-                        if(Aluno.ID == idsearch)
-                        {
-                            Console.WriteLine("Nome: " + Aluno.Nome);
-                            Console.WriteLine("CPF: " + Aluno.CPF);
-                            Console.WriteLine("Idade: " + Aluno.Idade);
-                        }
-                        else
-                        {
-                            Console.WriteLine("Loading...");
-                        }
-                    }
+                    aluno.GetAluno();
                     break;
                 case 3:
                     Console.WriteLine("Digite o ID do aluno que deseja EDITAR as informações: ");
